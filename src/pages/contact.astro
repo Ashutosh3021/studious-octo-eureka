@@ -1,0 +1,123 @@
+---
+import Base from '../layouts/Base.astro';
+import { serviceOptions, site } from '../data/site';
+---
+
+<Base
+  title="Contact"
+  description="Book a chair at Lavya in Patrapada, Bhubaneswar. Call, message or send an appointment request. Open daily, 10:00 to 21:00."
+>
+  <header class="page-hero">
+    <svg class="page-hero__strand" viewBox="0 0 600 900" preserveAspectRatio="none" aria-hidden="true">
+      <path data-strand d="M 520 -40 C 380 160 560 300 430 440 C 300 580 80 520 110 700 C 132 832 300 850 470 780"></path>
+    </svg>
+    <div class="wrap page-hero__grid">
+      <div class="page-hero__copy">
+        <p class="section-label">Contact</p>
+        <h1 class="page-hero__title display" data-split="lines">Tell us what you need.</h1>
+        <p class="page-hero__lede" data-reveal="up">
+          A call is quickest. A message works too. Send the form and it will open WhatsApp with
+          your details ready to go.
+        </p>
+      </div>
+      <div class="page-hero__side">
+        <p>Open daily, 10:00 to 21:00</p>
+        <p><a href={`tel:${site.phoneHref}`}>{site.phone}</a></p>
+        <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+      </div>
+    </div>
+  </header>
+
+  <section class="contact-page" id="book">
+    <div class="wrap contact-grid">
+      <div class="contact-form-col">
+        <p class="section-label">Appointment request</p>
+        <h2 class="page-hero__title display" style="font-size:var(--t-l); margin-top:1rem;">
+          Book a chair.
+        </h2>
+
+        <form class="contact-form" data-booking-form novalidate>
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required placeholder="Name" />
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="+91" />
+          </div>
+          <div class="field">
+            <label for="service">Service</label>
+            <select id="service" name="service">
+              {serviceOptions.map((option) => <option value={option}>{option}</option>)}
+            </select>
+          </div>
+          <div class="field">
+            <label for="day">Preferred day</label>
+            <input id="day" name="day" type="date" />
+          </div>
+          <div class="field field--full">
+            <label for="message">Anything we should know</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              placeholder="Hair, skin, occasion, or the time that suits you."
+            ></textarea>
+          </div>
+
+          <p class="form-note">
+            This form does not send anything to a server. It opens WhatsApp with your message,
+            so you can check it before sending. Prefer to talk?
+            <a href={`tel:${site.phoneHref}`}>Call {site.phone}</a>.
+          </p>
+
+          <p class="form-status" role="status" aria-live="polite" data-form-status></p>
+
+          <div class="field--full">
+            <button class="btn btn--solid" type="submit">
+              Send on WhatsApp
+              <svg class="btn__arrow" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M2 10 10 2M4 2h6v6" stroke="currentColor" stroke-width="1.2"></path>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <aside class="contact-aside">
+        <p class="section-label">The salon</p>
+        <a class="contact-aside__phone" href={`tel:${site.phoneHref}`}>{site.phone}</a>
+
+        <dl class="contact-details">
+          <div>
+            <dt>Address</dt>
+            <dd>
+              Plot No. 283, Patrapada<br />
+              Landmark: ICICI Bank<br />
+              Bhubaneswar, Odisha
+            </dd>
+          </div>
+          <div>
+            <dt>Email</dt>
+            <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
+          </div>
+          <div>
+            <dt>Hours</dt>
+            <dd>Monday to Sunday<br />10:00 am to 9:00 pm</dd>
+          </div>
+          <div>
+            <dt>Bridal and groups</dt>
+            <dd>Call ahead so we can plan the timings.</dd>
+          </div>
+        </dl>
+
+        <a class="contact-map" href={site.map} target="_blank" rel="noopener noreferrer">
+          Open in Google Maps
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <path d="M2 10 10 2M4 2h6v6" stroke="currentColor" stroke-width="1.2"></path>
+          </svg>
+        </a>
+      </aside>
+    </div>
+  </section>
+</Base>

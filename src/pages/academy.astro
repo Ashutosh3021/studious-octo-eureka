@@ -1,0 +1,88 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+
+<Base
+  title="Academy"
+  description="An academy enquiry for Lavya: hair, skin, makeup and spa training in Bhubaneswar."
+>
+  <header class="editorial-hero">
+    <svg class="editorial-hero__strand" viewBox="0 0 600 700" preserveAspectRatio="none" aria-hidden="true">
+      <path
+        data-strand
+        d="M 470 -40 C 340 120 520 240 400 360 C 300 460 140 420 150 540 C 158 640 300 650 430 600"
+      ></path>
+    </svg>
+    <div class="wrap">
+      <p class="section-label">Academy</p>
+      <h1 class="editorial-hero__title display" data-split="lines">Learn the craft, properly.</h1>
+      <p class="editorial-hero__lede" data-reveal="up">
+        A small training enquiry for people who want to work in a salon, not just pass a course.
+        Hair, skin, makeup and spa, taught on the floor.
+      </p>
+    </div>
+  </header>
+
+  <section class="editorial-body">
+    <div class="wrap editorial-grid">
+      <div class="editorial-grid__main prose">
+        <p>
+          Most salon training stops at a certificate. The part that matters is what happens
+          after: reading a client, choosing the right service, adjusting halfway through, and
+          finishing work you would put your own name on.
+        </p>
+        <p>
+          We are shaping a small academy programme around that gap. The details are still being
+          written, so we are listening first. If you want to train with a working salon team,
+          tell us where you are starting from.
+        </p>
+
+        <h2>Areas we would cover</h2>
+        <ul>
+          <li>Cutting and finishing, from the consultation to the last section.</li>
+          <li>Colour, highlights and the chemistry behind a safe result.</li>
+          <li>Skin analysis, facials, clean-ups and aftercare.</li>
+          <li>Bridal and occasion makeup in HD and airbrush finishes.</li>
+          <li>Spa routines, pressure, draping and a quiet room.</li>
+        </ul>
+
+        <h2>How it would work</h2>
+        <p>
+          Small groups, supervised practice and time on the floor with real appointments. We
+          would rather teach fewer people well than fill a room. The schedule, duration and fee
+          will be confirmed in writing before anything begins.
+        </p>
+
+        <div class="editorial-image" data-reveal="scale">
+          <img
+            src="/images/makeup.webp"
+            width="220"
+            height="220"
+            alt="A makeup artist applying eye makeup with a brush."
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <aside class="editorial-grid__side">
+        <div class="enquiry">
+          <h2>Register interest</h2>
+          <p>
+            Tell us what you already know, what you want to learn, and how many days a week you
+            can commit. We will reply when the next group is being planned.
+          </p>
+          <a class="btn btn--solid" href={`mailto:${site.email}?subject=Academy%20enquiry`}>
+            Email the team
+            <svg class="btn__arrow" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2 10 10 2M4 2h6v6" stroke="currentColor" stroke-width="1.2"></path>
+            </svg>
+          </a>
+          <p style="margin-top:1rem;">
+            Or call <a class="inline-link" href={`tel:${site.phoneHref}`}>{site.phone}</a>
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,59 @@
+---
+import Base from '../../layouts/Base.astro';
+import { posts } from '../../data/site';
+---
+
+<Base
+  title="Journal"
+  description="Notes from Lavya on hair, skin, spa and choosing a salon in Bhubaneswar."
+>
+  <header class="page-hero">
+    <svg class="page-hero__strand" viewBox="0 0 600 900" preserveAspectRatio="none" aria-hidden="true">
+      <path data-strand d="M 520 -40 C 380 160 560 300 430 440 C 300 580 80 520 110 700 C 132 832 300 850 470 780"></path>
+    </svg>
+    <div class="wrap page-hero__grid">
+      <div class="page-hero__copy">
+        <p class="section-label">Journal</p>
+        <h1 class="page-hero__title display" data-split="lines">Notes from the chair.</h1>
+        <p class="page-hero__lede" data-reveal="up">
+          Plain answers about hair, skin and spa, written for the questions we hear most often.
+        </p>
+      </div>
+      <div class="page-hero__side">
+        <p>Two entries</p>
+        <p>Updated when we have something worth saying.</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="journal-page">
+    <div class="wrap">
+      <div class="journal-list">
+        {posts.map((post) => (
+          <a class="journal-entry" href={`/journal/${post.slug}/`}>
+            <span class="journal-entry__date">{post.displayDate}</span>
+            <span>
+              <span class="journal-entry__title" style="display:block">{post.title}</span>
+              <span class="journal-entry__excerpt" style="display:block">{post.excerpt}</span>
+            </span>
+            <span class="journal-entry__image">
+              <img src={post.image} alt={post.imageAlt} width="720" height="424" loading="lazy" />
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="wrap" style="display:flex; flex-wrap:wrap; gap:1.5rem; justify-content:space-between; align-items:end;">
+      <p class="lede" style="max-width:32ch;">A question that is not here? Ask us directly.</p>
+      <a class="btn btn--solid" href="/contact/#book">
+        Ask the team
+        <svg class="btn__arrow" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="M2 10 10 2M4 2h6v6" stroke="currentColor" stroke-width="1.2"></path>
+        </svg>
+      </a>
+    </div>
+  </section>
+</Base>

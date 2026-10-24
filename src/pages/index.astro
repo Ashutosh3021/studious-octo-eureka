@@ -1,0 +1,330 @@
+---
+import Base from '../layouts/Base.astro';
+import ServiceIndex from '../components/ServiceIndex.astro';
+import {
+  gallery,
+  posts,
+  ritual,
+  serviceCategories,
+  site,
+  team,
+  testimonials,
+} from '../data/site';
+
+const strip = [gallery[0], gallery[1], gallery[2]];
+const [lead, ...rest] = testimonials;
+const journal = posts.slice(0, 2);
+---
+
+<Base>
+  <section class="hero">
+    <svg class="hero__strand hero__strand--desktop" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+      <path
+        id="hero-thread"
+        data-strand
+        data-strand-intro
+        d="M 372 540 C 520 552 620 630 760 648 C 880 664 910 560 990 520 C 1090 470 1230 470 1270 560 C 1310 690 1210 790 1100 760 C 990 730 980 600 1090 560 C 1180 528 1270 590 1290 680"
+      ></path>
+      <circle class="strand-bead" r="3.6">
+        <animateMotion dur="18s" repeatCount="indefinite" rotate="auto">
+          <mpath href="#hero-thread"></mpath>
+        </animateMotion>
+      </circle>
+    </svg>
+
+    <svg class="hero__strand hero__strand--mobile" viewBox="0 0 400 620" preserveAspectRatio="none" aria-hidden="true">
+      <path
+        data-strand
+        data-strand-intro
+        d="M 342 16 C 300 130 366 210 312 300 C 256 392 118 372 148 474 C 172 558 300 574 348 506"
+      ></path>
+    </svg>
+
+    <div class="wrap hero__inner">
+      <div class="hero__copy">
+        <p class="hero__kicker" data-reveal="fade" data-intro>Patrapada, Bhubaneswar</p>
+        <h1 class="hero__title display" data-split="lines" data-intro>
+          Cut, colour,<br />calm<span class="hero__dot">.</span>
+        </h1>
+        <p class="hero__lede" data-reveal="up" data-intro data-delay="0.1">
+          A unisex salon and spa for women, men, bridals and kids. One continuous thread from
+          the first question to the last quiet minute.
+        </p>
+        <div class="hero__actions" data-reveal="up" data-intro data-delay="0.2">
+          <a class="btn btn--solid" href="/contact/#book" data-magnetic="0.25">
+            Book a chair
+            <svg class="btn__arrow" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2 10 10 2M4 2h6v6" stroke="currentColor" stroke-width="1.2"></path>
+            </svg>
+          </a>
+          <a class="text-link" href="/services/">
+            See the services
+            <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.2"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <figure class="hero__media">
+        <div class="hero__media-frame" data-reveal="scale" data-intro data-delay="0.15">
+          <img
+            src="/images/spa-still-life.jpg"
+            width="1024"
+            height="923"
+            alt="A white orchid, rolled towels and massage balls arranged on a pale surface."
+            data-critical
+            fetchpriority="high"
+          />
+        </div>
+        <figcaption class="hero__media-caption">
+          <span>The quiet corner</span>
+          <span>Still life, Lavya</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="wrap hero__foot">
+      <span>Open daily, 10:00 to 21:00</span>
+      <a href={site.map} target="_blank" rel="noopener noreferrer">Plot 283, Patrapada</a>
+      <span>
+        <span class="scroll-cue" aria-hidden="true"></span>
+        Scroll
+      </span>
+    </div>
+  </section>
+
+  <section class="section section--airy statement">
+    <div class="wrap statement__grid">
+      <p class="section-label statement__label">The idea</p>
+      <h2 class="statement__title display" data-split="lines">
+        Beauty begins with wellness.
+      </h2>
+      <div class="statement__body">
+        <p class="lede" data-reveal="up">
+          A salon should feel like a held breath, not a performance. Warm light, clean tools, a
+          stylist who listens before they lift a brush.
+        </p>
+        <p class="muted" data-reveal="up" data-delay="0.08">
+          Lavya is built on that idea: hair, skin and spa under one roof, for every person in
+          the family. The work is precise. The room is unhurried.
+        </p>
+      </div>
+      <figure class="statement__media">
+        <div class="statement__media-frame" data-reveal="scale">
+          <img
+            src="/images/hair-portrait.webp"
+            width="220"
+            height="220"
+            alt="A finished blowout with loose, brushed-out waves."
+            loading="lazy"
+          />
+        </div>
+        <figcaption>
+          <span>The finish</span>
+          <span>Lavya</span>
+        </figcaption>
+      </figure>
+      <div class="statement__rule" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="facts">
+    <div class="wrap facts__grid">
+      <div class="fact">
+        <span class="fact__label">Hours</span>
+        <span class="fact__value">Every day<br />10:00 to 21:00</span>
+      </div>
+      <div class="fact">
+        <span class="fact__label">Call or message</span>
+        <span class="fact__value"><a href={`tel:${site.phoneHref}`}>{site.phone}</a></span>
+      </div>
+      <div class="fact">
+        <span class="fact__label">Find us</span>
+        <span class="fact__value">Patrapada, Bhubaneswar<br /><span class="muted">Landmark: ICICI Bank</span></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section services" id="services">
+    <div class="wrap">
+      <div class="services__head">
+        <div class="services__head-copy">
+          <p class="section-label">The menu</p>
+          <h2 class="services__title display" data-split="lines">
+            Five ways to be looked after.
+          </h2>
+        </div>
+        <p class="services__head-side" data-reveal="up">
+          Hair, skin, spa, bridal and grooming. Each service begins with a conversation, and the
+          same stylist stays with you throughout.
+        </p>
+      </div>
+
+      <ServiceIndex />
+    </div>
+  </section>
+
+  <section class="ritual" data-ritual>
+    <div class="wrap ritual__grid">
+      <div class="ritual__copy">
+        <p class="section-label ritual__eyebrow">The ritual</p>
+        <h2 class="ritual__title display" data-split="lines">
+          A visit, in three movements.
+        </h2>
+        <p class="ritual__intro" data-reveal="up">
+          Nothing here is rushed to make room for the next chair. The hour is built around what
+          you came in for.
+        </p>
+
+        <div class="ritual__chapters">
+          <span class="ritual__rail" aria-hidden="true"><span class="ritual__rail-fill" data-ritual-fill></span></span>
+          {ritual.map((chapter, i) => (
+            <article class="ritual__chapter" data-ritual-chapter class:list={{ 'is-active': i === 0 }}>
+              <div class="ritual__chapter-top">
+                <span class="ritual__num">{chapter.number}</span>
+                <h3>{chapter.title}</h3>
+              </div>
+              <p>{chapter.text}</p>
+              <figure class="ritual__chapter-media">
+                <img src={chapter.image} alt={chapter.imageAlt} width="480" height="356" loading="lazy" />
+              </figure>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <figure class="ritual__stage">
+        <div class="ritual__stage-frame">
+          {ritual.map((chapter, i) => (
+            <img
+              src={chapter.image}
+              alt={chapter.imageAlt}
+              width="720"
+              height="900"
+              class:list={{ 'is-active': i === 0 }}
+              data-ritual-image
+              loading="lazy"
+            />
+          ))}
+        </div>
+        <figcaption>Consult, work, quiet. In that order.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section strip">
+    <div class="wrap">
+      <div class="strip__head">
+        <div>
+          <p class="section-label">The room</p>
+          <h2 class="strip__title display" data-split="lines">Minutes that slow down.</h2>
+        </div>
+        <a class="text-link" href="/gallery/">
+          See the gallery
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.2"></path>
+          </svg>
+        </a>
+      </div>
+
+      <div class="strip__grid">
+        {strip.map((image, i) => (
+          <figure class:list={['strip__item', `strip__item--${['a', 'b', 'c'][i]}`]}>
+            <div class="strip__frame">
+              <img
+                src={image.src}
+                alt={image.alt}
+                width={image.width}
+                height={image.height}
+                loading="lazy"
+              />
+            </div>
+            <figcaption>{image.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight team">
+    <div class="wrap team__grid">
+      <div class="team__head">
+        <p class="section-label">The people</p>
+        <h2 class="team__title display" data-split="lines">Hands you can return to.</h2>
+        <p class="team__note">
+          Four people, one standard. Ask for the same stylist each time and they will remember
+          the details.
+        </p>
+      </div>
+      <div class="team__list">
+        {team.map((member) => (
+          <div class="team__row">
+            <span class="team__name">{member.name}</span>
+            <span class="team__role">{member.role}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section voices">
+    <div class="wrap voices__grid">
+      <div class="voices__head">
+        <p class="section-label">In their words</p>
+        <h2 class="voices__title display" data-split="lines">Quietly recommended.</h2>
+      </div>
+
+      <figure class="quote-large" data-reveal="up">
+        <blockquote>{lead.quote}</blockquote>
+        <figcaption>{lead.name}</figcaption>
+      </figure>
+
+      {rest.map((testimonial) => (
+        <figure class="quote-small" data-reveal="up">
+          <blockquote>{testimonial.quote}</blockquote>
+          <figcaption>{testimonial.name}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  <section class="section journal">
+    <div class="wrap">
+      <div class="journal__head">
+        <div>
+          <p class="section-label">The journal</p>
+          <h2 class="journal__title display" data-split="lines">Notes from the chair.</h2>
+        </div>
+        <a class="text-link" href="/journal/">
+          All entries
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.2"></path>
+          </svg>
+        </a>
+      </div>
+
+      <div class="journal__grid">
+        {journal.map((post, i) => (
+          <a class:list={['post-card', `post-card--${i === 0 ? 'a' : 'b'}`]} href={`/journal/${post.slug}/`}>
+            <div class="post-card__frame" data-reveal="clip">
+              <img
+                src={post.image}
+                alt={post.imageAlt}
+                width="720"
+                height="464"
+                loading="lazy"
+              />
+            </div>
+            <div class="post-card__meta">
+              <span>{post.displayDate}</span>
+              <span>{post.readingTime}</span>
+            </div>
+            <h3 class="post-card__title">{post.title}</h3>
+            <p class="post-card__excerpt">{post.excerpt}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,91 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+
+<Base
+  title="Franchise"
+  description="A franchise enquiry for Lavya, the unisex salon and spa in Patrapada, Bhubaneswar."
+>
+  <header class="editorial-hero">
+    <svg class="editorial-hero__strand" viewBox="0 0 600 700" preserveAspectRatio="none" aria-hidden="true">
+      <path
+        data-strand
+        d="M 500 -40 C 360 140 540 260 420 380 C 320 480 160 440 180 560 C 196 660 340 660 470 610"
+      ></path>
+    </svg>
+    <div class="wrap">
+      <p class="section-label">Franchise</p>
+      <h1 class="editorial-hero__title display" data-split="lines">Bring Lavya to your city.</h1>
+      <p class="editorial-hero__lede" data-reveal="up">
+        We are opening a small number of conversations with operators who want to run a Lavya
+        salon and spa in their city. It starts with a call, not a contract.
+      </p>
+    </div>
+  </header>
+
+  <section class="editorial-body">
+    <div class="wrap editorial-grid">
+      <div class="editorial-grid__main prose">
+        <p>
+          Lavya is a unisex salon and spa built on a simple standard: one team for the whole
+          family, one consultation before any service, and a room calm enough to spend an hour
+          in. We are careful about where that standard travels.
+        </p>
+        <p>
+          If you already run a salon, or you are planning one, and the way we work fits how you
+          want to work, write to us. We will ask about your city, your space, your team and your
+          timeline before we talk about anything else.
+        </p>
+
+        <h2>What a first conversation covers</h2>
+        <ul>
+          <li>The location, the size of the space and the neighbourhood around it.</li>
+          <li>The team you have, or the team you plan to build.</li>
+          <li>The services you want to lead with, and the ones you would add later.</li>
+          <li>How you would keep the consultation and aftercare standard consistent.</li>
+          <li>Your timeline, and what you need from us to make a decision.</li>
+        </ul>
+
+        <h2>What we are not</h2>
+        <p>
+          This is not a turnkey package with a fixed fee published on a page. Terms are
+          discussed individually, in writing, and only after both sides have seen the space and
+          the plan. If that sounds slow, it is meant to.
+        </p>
+
+        <div class="editorial-image" data-reveal="scale">
+          <img
+            src="/images/grooming.webp"
+            width="220"
+            height="220"
+            alt="A short, shaped haircut and beard in the salon."
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <aside class="editorial-grid__side">
+        <div class="enquiry">
+          <h2>Start an enquiry</h2>
+          <p>
+            Send your city, the address of the space if you have one, and a phone number. We
+            will reply from the salon.
+          </p>
+          <a
+            class="btn btn--solid"
+            href={`mailto:${site.email}?subject=Franchise%20enquiry`}
+          >
+            Email the team
+            <svg class="btn__arrow" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2 10 10 2M4 2h6v6" stroke="currentColor" stroke-width="1.2"></path>
+            </svg>
+          </a>
+          <p style="margin-top:1rem;">
+            Or call <a class="inline-link" href={`tel:${site.phoneHref}`}>{site.phone}</a>
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Base>

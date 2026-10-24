@@ -1,0 +1,75 @@
+---
+import Base from '../../layouts/Base.astro';
+import { posts, site } from '../../data/site';
+
+export function getStaticPaths() {
+  return posts.map((post, index) => ({
+    params: { slug: post.slug },
+    props: {
+      post,
+      next: posts[(index + 1) % posts.length],
+    },
+  }));
+}
+
+const { post, next } = Astro.props;
+---
+
+<Base title={post.title} description={post.excerpt} image={post.image}>
+  <article class="article-page">
+    <div class="wrap">
+      <header class="article-head">
+        <div class="article-head__copy">
+          <p class="section-label">Journal</p>
+          <h1 class="article-title display" data-split="lines">{post.title}</h1>
+        </div>
+        <div class="article-head__meta">
+          <p>{post.displayDate}</p>
+          <p>{post.readingTime}</p>
+          <p>Lavya, Patrapada</p>
+        </div>
+      </header>
+
+      <div class="article-image" data-reveal="clip">
+        <img
+          src={post.image}
+          alt={post.imageAlt}
+          width="1200"
+          height="600"
+          data-critical
+        />
+      </div>
+
+      <div class="article-body">
+        <div class="prose">
+          {post.body.map((section) => {
+            switch (section.type) {
+              case 'h2':
+                return <h2>{section.text}</h2>;
+              case 'quote':
+                return <blockquote><p>{section.text}</p></blockquote>;
+              case 'list':
+                return <ul>{section.items.map((item) => <li>{item}</li>)}</ul>;
+              default:
+                return <p>{section.text}</p>;
+            }
+          })}
+        </div>
+
+        <aside class="article-aside">
+          <div class="article-aside__inner">
+            <p>Book an appointment</p>
+            <a href="/contact/#book">Send a request</a>
+            <a href={`tel:${site.phoneHref}`}>{site.phone}</a>
+            <a href="/journal/">All journal entries</a>
+          </div>
+        </aside>
+
+        <div class="article-next">
+          <span>Next entry</span>
+          <a href={`/journal/${next.slug}/`}>{next.title}</a>
+        </div>
+      </div>
+    </div>
+  </article>
+</Base>

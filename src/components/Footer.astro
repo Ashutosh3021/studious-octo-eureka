@@ -1,0 +1,75 @@
+---
+import { site } from '../data/site';
+
+const links = [
+  { label: 'Services', href: '/services/' },
+  { label: 'Gallery', href: '/gallery/' },
+  { label: 'About', href: '/about/' },
+  { label: 'Journal', href: '/journal/' },
+  { label: 'Contact', href: '/contact/' },
+  { label: 'Franchise', href: '/franchise/' },
+  { label: 'Academy', href: '/academy/' },
+  { label: 'Privacy', href: '/privacy/' },
+];
+---
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer__cta">
+      <a class="footer__cta-link" href="/contact/#book">
+        Book your chair.
+        <svg class="footer__cta-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 20 20 4M7 4h13v13" stroke="currentColor" stroke-width="1.2"></path>
+        </svg>
+      </a>
+      <p class="footer__cta-note">
+        Call, message or send the form. We will confirm the time with you, every day between
+        10:00 and 21:00.
+      </p>
+    </div>
+
+    <div class="footer__main">
+      <div class="footer__col">
+        <h2>Visit</h2>
+        <address class="footer__address">
+          <p>Plot No. 283, Patrapada</p>
+          <p>Landmark: ICICI Bank</p>
+          <p>Bhubaneswar, Odisha</p>
+        </address>
+        <p style="margin-top: 1rem">
+          <a href={site.map} target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+        </p>
+      </div>
+
+      <div class="footer__col">
+        <h2>Reach us</h2>
+        <p><a href={`tel:${site.phoneHref}`}>{site.phone}</a></p>
+        <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+        <p style="margin-top: 0.7rem">Monday to Sunday</p>
+        <p>10:00 am to 9:00 pm</p>
+      </div>
+
+      <div class="footer__col">
+        <h2>Pages</h2>
+        <nav class="footer__nav" aria-label="Footer">
+          {links.map((link) => <a href={link.href}>{link.label}</a>)}
+        </nav>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span class="footer__mark">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path
+            d="M5 19V5h4.5c4.2 0 6.4 2.2 6.4 5.3 0 3.2-2.3 5.4-6.4 5.4H8.6"
+            stroke="currentColor"
+            stroke-width="1.1"></path>
+          <path d="M15.5 15.2 20 19" stroke="#C6A15B" stroke-width="1.1"></path>
+        </svg>
+        Lavya
+      </span>
+      <span>Salon and spa in Patrapada, Bhubaneswar.</span>
+      <span>&copy; {new Date().getFullYear()} {site.fullName}</span>
+    </div>
+  </div>
+</footer>

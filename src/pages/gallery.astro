@@ -1,0 +1,65 @@
+---
+import Base from '../layouts/Base.astro';
+import { gallery } from '../data/site';
+---
+
+<Base
+  title="Gallery"
+  description="A look inside Lavya: the room, the spa, hair, makeup and grooming work in Patrapada, Bhubaneswar."
+>
+  <header class="page-hero">
+    <svg class="page-hero__strand" viewBox="0 0 600 900" preserveAspectRatio="none" aria-hidden="true">
+      <path data-strand d="M 520 -40 C 380 160 560 300 430 440 C 300 580 80 520 110 700 C 132 832 300 850 470 780"></path>
+    </svg>
+    <div class="wrap page-hero__grid">
+      <div class="page-hero__copy">
+        <p class="section-label">Gallery</p>
+        <h1 class="page-hero__title display" data-split="lines">The room, and the work.</h1>
+        <p class="page-hero__lede" data-reveal="up">
+          Ten frames from the salon and the treatment room. No filters beyond the warm light we
+          actually use.
+        </p>
+      </div>
+      <div class="page-hero__side">
+        <p>Photography supplied by Lavya.</p>
+        <p>Service imagery, not named clients.</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="gallery-page">
+    <div class="wrap">
+      <div class="gallery-grid">
+        {gallery.map((image, i) => (
+          <figure class:list={['gallery-item', `gallery-item--${image.size}`]}>
+            <div class="gallery-item__frame" data-reveal={i === 0 ? 'clip' : 'fade'}>
+              <img
+                src={image.src}
+                alt={image.alt}
+                width={image.width}
+                height={image.height}
+                loading={i === 0 ? 'eager' : 'lazy'}
+              />
+            </div>
+            <figcaption>
+              <span>{image.caption}</span>
+              <span>{String(i + 1).padStart(2, '0')}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="wrap" style="display:flex; flex-wrap:wrap; gap:1.5rem; justify-content:space-between; align-items:end;">
+      <p class="lede" style="max-width:32ch;">The best way to see the room is to sit in it.</p>
+      <a class="btn btn--solid" href="/contact/#book">
+        Book a visit
+        <svg class="btn__arrow" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="M2 10 10 2M4 2h6v6" stroke="currentColor" stroke-width="1.2"></path>
+        </svg>
+      </a>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Page not found" noindex>
+  <section class="notfound">
+    <svg class="notfound__strand" viewBox="0 0 800 700" preserveAspectRatio="none" aria-hidden="true">
+      <path
+        data-strand
+        d="M 760 40 C 560 120 690 260 540 340 C 400 414 300 330 250 430 C 200 530 330 600 420 560"
+      ></path>
+    </svg>
+    <div class="wrap notfound__grid">
+      <div class="notfound__copy">
+        <p class="notfound__code" aria-hidden="true">404</p>
+        <h1 class="notfound__title display" data-split="lines">The line stops here.</h1>
+        <p class="notfound__lede" data-reveal="up">
+          This page does not exist, or it has moved. The salon is still open every day, 10:00 to
+          21:00.
+        </p>
+        <div class="notfound__actions">
+          <a class="btn btn--solid" href="/">Back to the start</a>
+          <a class="text-link" href="/services/">
+            See the services
+            <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.2"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

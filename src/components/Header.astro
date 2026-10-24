@@ -1,0 +1,74 @@
+---
+import { nav, site } from '../data/site';
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => {
+  const clean = href.replace(/\/$/, '') || '/';
+  return clean === '/' ? path === '/' : path === clean || path.startsWith(`${clean}/`);
+};
+const menu = [
+  ...nav,
+  { label: 'Franchise', href: '/franchise/' },
+  { label: 'Academy', href: '/academy/' },
+];
+---
+
+<header class="site-header">
+  <div class="wrap header__inner">
+    <a class="brand" href="/" aria-label="Lavya home">
+      <img
+        src="/images/lavya-logo-small.webp"
+        width="531"
+        height="169"
+        alt="Lavya Unisex Salon and Spa"
+        data-critical
+      />
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      {nav.map((item) => (
+        <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
+      ))}
+    </nav>
+
+    <a class="btn header__book" href="/contact/#book">
+      Book
+      <svg class="btn__arrow" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+        <path d="M2 10 10 2M4 2h6v6" stroke="currentColor" stroke-width="1.2"></path>
+      </svg>
+    </a>
+
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-open>
+      Menu
+      <span class="menu-toggle__icon" aria-hidden="true"><span></span><span></span></span>
+    </button>
+  </div>
+</header>
+
+<div class="site-menu" id="site-menu" role="dialog" aria-modal="true" aria-label="Site menu" tabindex="-1" hidden>
+  <div class="site-menu__top">
+    <span class="site-menu__brand">Lavya</span>
+    <button class="site-menu__close" type="button" data-menu-close>Close</button>
+  </div>
+
+  <nav class="site-menu__nav" aria-label="Mobile">
+    {menu.map((item, i) => (
+      <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+        {item.label}
+        <span>{String(i + 1).padStart(2, '0')}</span>
+      </a>
+    ))}
+  </nav>
+
+  <div class="site-menu__foot">
+    <div>
+      <p>Open daily, 10:00 to 21:00</p>
+      <p>Plot 283, Patrapada, Bhubaneswar</p>
+    </div>
+    <div>
+      <a href={`tel:${site.phoneHref}`}>{site.phone}</a>
+      <br />
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+    </div>
+  </div>
+</div>

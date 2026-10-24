@@ -1,0 +1,60 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+
+<Base
+  title="Privacy"
+  description="How the Lavya website handles your information. The appointment form opens WhatsApp and does not store data on this site."
+  noindex
+>
+  <header class="editorial-hero">
+    <div class="wrap">
+      <p class="section-label">Privacy</p>
+      <h1 class="editorial-hero__title display" data-split="lines">What happens to your details.</h1>
+      <p class="editorial-hero__lede" data-reveal="up">
+        The short version: this website does not run accounts, store form entries or track you
+        across other sites.
+      </p>
+    </div>
+  </header>
+
+  <section class="editorial-body">
+    <div class="wrap editorial-grid">
+      <div class="editorial-grid__main prose">
+        <h2>The appointment form</h2>
+        <p>
+          The form on the contact page does not send data to a server. It builds a message in
+          your browser and opens WhatsApp, where you can review and send it yourself. The
+          message then sits in your WhatsApp conversation with Lavya, subject to WhatsApp's own
+          terms.
+        </p>
+
+        <h2>What we keep</h2>
+        <p>
+          If you call, email or message the salon, we keep the details you choose to share so we
+          can confirm and remember your appointment. We do not sell or rent those details.
+        </p>
+
+        <h2>Cookies and analytics</h2>
+        <p>
+          This site does not set advertising cookies and does not include third party analytics.
+          Fonts and images are served from this domain.
+        </p>
+
+        <h2>Photography</h2>
+        <p>
+          Service photographs on this site are supplied by Lavya. They are not presented as
+          named clients or team members.
+        </p>
+
+        <h2>Questions</h2>
+        <p>
+          Write to <a class="inline-link" href={`mailto:${site.email}`}>{site.email}</a> or call
+          <a class="inline-link" href={`tel:${site.phoneHref}`}> {site.phone}</a>. We will answer
+          directly.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>

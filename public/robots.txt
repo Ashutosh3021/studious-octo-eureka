@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /privacy/
+
+Sitemap: https://lavyasalon.com/sitemap-index.xml

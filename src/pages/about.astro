@@ -1,0 +1,135 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, team } from '../data/site';
+---
+
+<Base
+  title="About"
+  description="Lavya is a unisex salon and spa in Patrapada, Bhubaneswar, with hair, skin, spa, bridal and grooming under one roof."
+>
+  <header class="page-hero">
+    <svg class="page-hero__strand" viewBox="0 0 600 900" preserveAspectRatio="none" aria-hidden="true">
+      <path data-strand d="M 520 -40 C 380 160 560 300 430 440 C 300 580 80 520 110 700 C 132 832 300 850 470 780"></path>
+    </svg>
+    <div class="wrap page-hero__grid">
+      <div class="page-hero__copy">
+        <p class="section-label">About Lavya</p>
+        <h1 class="page-hero__title display" data-split="lines">Built around the person in the chair.</h1>
+        <p class="page-hero__lede" data-reveal="up">
+          A unisex salon and spa in Patrapada, with one team for the whole family and one
+          standard for every service.
+        </p>
+      </div>
+      <div class="page-hero__side">
+        <p>Patrapada, Bhubaneswar</p>
+        <p>Open daily, 10:00 to 21:00</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="about-band--mark">
+    <div class="wrap about-mark">
+      <div class="about-mark__plate">
+        <img
+          src="/images/lavya-logo.png"
+          width="1024"
+          height="383"
+          alt="Lavya Unisex Salon and Spa"
+          loading="lazy"
+        />
+      </div>
+      <div class="about-mark__copy">
+        <p class="section-label">The name on the door</p>
+        <h2 class="about-mark__title display">A salon, a spa, a shared standard.</h2>
+        <p>
+          Lavya was built for the whole family: women, men, bridals and kids, in the same room,
+          with the same attention. Hair, skin and spa sit together because they inform each
+          other. A dry scalp changes the hair spa. Reactive skin changes the facial.
+        </p>
+        <p>
+          The address is Plot 283, Patrapada, beside the ICICI Bank. The door is open every day
+          from 10:00 am to 9:00 pm.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-band--story">
+    <div class="wrap about-story">
+      <h2 class="about-story__title display" data-split="lines">The work is precise. The room is unhurried.</h2>
+      <div class="about-story__body">
+        <p data-reveal="up">
+          A good appointment starts before the tools come out. We ask what you have been doing
+          with your hair, what your skin reacts to, how much time you actually have. Then we
+          build the service around the answer.
+        </p>
+        <p data-reveal="up" data-delay="0.08">
+          Our stylists and therapists work across the full menu, so a cut, a colour, a facial
+          and a massage are not separate worlds. If something changes halfway through, the plan
+          changes with it.
+        </p>
+        <p data-reveal="up" data-delay="0.12">
+          No upselling, no script. The aim is a result you can keep at home, and a chair you are
+          glad to come back to.
+        </p>
+        <div class="about-story__media" data-reveal="scale">
+          <img
+            src="/images/head-massage.jpg"
+            width="400"
+            height="325"
+            alt="A therapist working along the hairline during a head massage."
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="wrap team__grid">
+      <div class="team__head">
+        <p class="section-label">The team</p>
+        <h2 class="team__title display" data-split="lines">Four people to ask for.</h2>
+        <p class="team__note">Every member of the team works across the services listed on this site.</p>
+      </div>
+      <div class="team__list">
+        {team.map((member) => (
+          <div class="team__row">
+            <span class="team__name">{member.name}</span>
+            <span class="team__role">{member.role}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="about-band--hours">
+    <div class="wrap about-hours">
+      <h2 class="about-hours__title display">Hours</h2>
+      <div class="about-hours__body">
+        <ul class="hours-list">
+          <li><span>Monday to Friday</span><span>10:00 am to 9:00 pm</span></li>
+          <li><span>Saturday</span><span>10:00 am to 9:00 pm</span></li>
+          <li><span>Sunday</span><span>10:00 am to 9:00 pm</span></li>
+          <li><span>Bridal and group bookings</span><span>By arrangement</span></li>
+        </ul>
+        <p class="muted" style="margin-top:1.2rem; font-size:var(--t-s);">
+          For a bridal party or a group, call <a class="inline-link" href={`tel:${site.phoneHref}`}>{site.phone}</a>
+          and we will plan the timings with you.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="wrap" style="display:flex; flex-wrap:wrap; gap:1.5rem; justify-content:space-between; align-items:end;">
+      <p class="lede" style="max-width:30ch;">Come and see the room before you book.</p>
+      <a class="btn btn--solid" href="/contact/#book">
+        Book a visit
+        <svg class="btn__arrow" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="M2 10 10 2M4 2h6v6" stroke="currentColor" stroke-width="1.2"></path>
+        </svg>
+      </a>
+    </div>
+  </section>
+</Base>

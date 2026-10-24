@@ -1,0 +1,43 @@
+---
+import { serviceCategories } from '../data/site';
+
+interface Props {
+  preview?: boolean;
+}
+
+const { preview = true } = Astro.props;
+---
+
+<ul class="service-index">
+  {serviceCategories.map((category) => (
+    <li>
+      <a
+        class="service-row"
+        href={`/services/#${category.id}`}
+        data-service-row
+        data-image={category.image}
+      >
+        <span class="service-row__num">{category.index}</span>
+        <span class="service-row__title">{category.title}</span>
+        <span class="service-row__kicker">{category.kicker}</span>
+        <span class="service-row__end">
+          <span class="service-row__thumb" aria-hidden="true">
+            <img src={category.image} alt="" width="64" height="64" loading="lazy" />
+          </span>
+          <svg class="service-row__loop" viewBox="0 0 42 42" aria-hidden="true">
+            <path d="M21 4c9 0 16 7 16 17 0 10-7 17-16 17S5 31 5 21C5 13 9 7 16 5"></path>
+          </svg>
+          <svg class="service-row__arrow" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <path d="M2 10 10 2M4 2h6v6" stroke="currentColor" stroke-width="1.2"></path>
+          </svg>
+        </span>
+      </a>
+    </li>
+  ))}
+</ul>
+
+{preview && (
+  <div class="service-preview" data-service-preview aria-hidden="true">
+    <img src={serviceCategories[0].image} alt="" width="230" height="280" data-preview-image />
+  </div>
+)}
